@@ -43,9 +43,30 @@ h1.title {
 
 .content select {
   margin-left: 10px;
+  font-size: 16px;
 }
 
-/* .content label,
-.content select {
-  display: block;
-} */
+.add-score-form {
+  padding-top: 20px;
+}
+
+.form-title {
+  padding-bottom: 5px;
+}
+
+.add-score-form input,
+.add-score-form button {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+input.player-points {
+  width: 100px;
+}
+
+button.submit {
+  /* background-color: #61dafb;
+  border: 1px solid #61dafb;
+  padding: 5px 10px;
+  border-radius: 5px; */
+}

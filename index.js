@@ -8,6 +8,7 @@ const { createScoreRouter } = require('./routes/score/new');
 
 const app = express();
 app.use(bodyParser.json());
+app.set('trust proxy', true);
 
 const connectToDb = async () => {
   try {

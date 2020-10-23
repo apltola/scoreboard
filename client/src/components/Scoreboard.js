@@ -5,12 +5,31 @@ import '../styles/Scoreboard.css';
 const Scoreboard = () => {
   const [scores, setScores] = useState([]);
   const [sortValue, setSortValue] = useState('high');
+  const [playerName, setPlayerName] = useState('');
+  const [points, setPoints] = useState('');
 
   const fetchScores = async () => {
     const res = await axios.get('/api/score');
-    setScores(res.data);
-    //const sortedData = sortScores(res.data);
-    //setScores(sortedData);
+    const sortedScores = sortScores(res.data);
+    setScores(sortedScores);
+  };
+
+  const addNewScore = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post('/api/score', {
+        player: playerName,
+        score: points,
+      });
+
+      const sortedScores = sortScores(res.data);
+      setScores(sortedScores);
+      setPlayerName('');
+      setPoints('');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const sortScores = (arr) => {
@@ -73,6 +92,36 @@ const Scoreboard = () => {
           <div>Points</div>
         </div>
         {renderScores()}
+
+        {/* <h3>Add score</h3> */}
+        <form onSubmit={addNewScore} className="add-score-form">
+          <div className="form-title">Add New Score</div>
+          <input
+            value={playerName}
+            onChange={(e) => setPlayerName(e.target.value)}
+            type="text"
+            name="player"
+            placeholder="Player name"
+            className="player-name"
+          />
+          <input
+            value={points}
+            onChange={(e) => setPoints(e.target.value)}
+            type="number"
+            min={0}
+            name="points"
+            placeholder="Points"
+            className="player-points"
+          />
+          <button
+            type="submit"
+            //className="submit"
+            className={!playerName || !points ? 'disabled submit' : 'submit'}
+            disabled={!playerName || !points}
+          >
+            Submit
+          </button>
+        </form>
       </div>
 
       {/* <div style={{ paddingTop: '50px' }}>

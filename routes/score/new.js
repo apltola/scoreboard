@@ -24,7 +24,12 @@ router.post(
     });
     await newScore.save();
 
-    res.send(newScore);
+    const scores = await Score.find({});
+    /* const sortedByHighScore = scores.sort((a, b) => {
+      return b.score - a.score;
+    }); */
+
+    res.send(scores);
   }
 );
 
