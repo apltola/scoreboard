@@ -22,7 +22,7 @@ h1.title {
 
 .scoreboard .content {
   min-height: 200px;
-  padding: 15px 20px 40px;
+  padding: 25px 20px 45px;
 }
 
 .row {
@@ -38,7 +38,7 @@ h1.title {
 
 .title-row {
   font-weight: bold;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .content select {
@@ -47,11 +47,12 @@ h1.title {
 }
 
 .add-score-form {
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .form-title {
   padding-bottom: 5px;
+  font-weight: bold;
 }
 
 .add-score-form input,
@@ -64,9 +65,14 @@ input.player-points {
   width: 100px;
 }
 
-button.submit {
-  /* background-color: #61dafb;
-  border: 1px solid #61dafb;
-  padding: 5px 10px;
-  border-radius: 5px; */
+@media screen and (max-width: 600px) {
+  .add-score-form input {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .add-score-form button {
+    display: block;
+    margin-top: 15px;
+  }
 }

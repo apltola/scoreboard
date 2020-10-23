@@ -75,7 +75,7 @@ const Scoreboard = () => {
     <div className="scoreboard">
       <h1 className="title">SCOREBOARD</h1>
       <div className="content">
-        <div>
+        <div className="sort-container">
           <label>Sort By Score</label>
           <select
             name="sort"

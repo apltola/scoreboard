@@ -13,8 +13,8 @@
 
 .main {
   flex: 1;
-  padding-top: 40px;
-  padding-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 80px;
   display: flex;
   justify-content: center;
 }
@@ -22,7 +22,6 @@
 .page-content {
   flex: 1;
   max-width: 800px;
-  /* border: 1px solid goldenrod; */
   padding: 10px;
 }
 
@@ -39,4 +38,10 @@
 
 .app-footer a:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 600px) {
+  .app-header {
+    text-align: center;
+  }
 }
