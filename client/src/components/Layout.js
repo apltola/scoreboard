@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
         <a
           href="https://github.com/apltola/scoreboard"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           github
         </a>

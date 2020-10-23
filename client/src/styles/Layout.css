@@ -22,22 +22,21 @@
 .page-content {
   flex: 1;
   max-width: 800px;
-  border: 1px solid black;
+  /* border: 1px solid goldenrod; */
+  padding: 10px;
 }
 
 .app-footer {
   padding: 30px;
   color: white;
   font-size: 18px;
-  background: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 150%),
-    linear-gradient(
-      to top,
-      rgba(255, 255, 255, 0.4) 0%,
-      rgba(0, 0, 0, 0.25) 200%
-    );
-  background-blend-mode: multiply;
+  background-color: #282c34;
 }
 
 .app-footer a {
-  color: goldenrod;
+  color: #61dafb;
+}
+
+.app-footer a:hover {
+  opacity: 0.8;
 }

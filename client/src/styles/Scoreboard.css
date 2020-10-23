@@ -1,0 +1,51 @@
+.scoreboard {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+h1.title {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+  font-family: Brush Script MT, Avenir, Helvetica, Arial, sans-serif;
+  background-image: linear-gradient(
+    -225deg,
+    #3d4e81 0%,
+    #5753c9 48%,
+    #6e7ff3 100%
+  );
+}
+
+.scoreboard .content {
+  min-height: 200px;
+  padding: 15px 20px 40px;
+}
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 10px 5px;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.row > div {
+  flex: 1;
+}
+
+.title-row {
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.content select {
+  margin-left: 10px;
+}
+
+/* .content label,
+.content select {
+  display: block;
+} */
