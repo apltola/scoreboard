@@ -4,14 +4,11 @@
     0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
-h1.title {
-  margin-block-start: 0;
-  margin-block-end: 0;
+.scoreboard-header {
   padding: 20px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  color: white;
-  font-family: Brush Script MT, Avenir, Helvetica, Arial, sans-serif;
+  color: #ffffff;
   background-image: linear-gradient(
     -225deg,
     #3d4e81 0%,
@@ -20,9 +17,21 @@ h1.title {
   );
 }
 
+.title {
+  font-size: 26px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-family: Brush Script MT, Avenir, Helvetica, Arial, sans-serif;
+}
+
 .scoreboard .content {
   min-height: 200px;
   padding: 25px 20px 45px;
+}
+
+.content select {
+  margin-left: 10px;
+  font-size: 16px;
 }
 
 .row {
@@ -39,11 +48,6 @@ h1.title {
 .title-row {
   font-weight: bold;
   padding-top: 30px;
-}
-
-.content select {
-  margin-left: 10px;
-  font-size: 16px;
 }
 
 .add-score-form {
@@ -66,6 +70,10 @@ input.player-points {
 }
 
 @media screen and (max-width: 600px) {
+  .title {
+    font-size: 22px;
+  }
+
   .add-score-form input {
     display: block;
     margin-bottom: 10px;

@@ -4,15 +4,19 @@ import '../styles/Scoreboard.css';
 
 const Scoreboard = () => {
   const [scores, setScores] = useState([]);
-  const [sortValue, setSortValue] = useState('high');
+  const [sortType, setSortType] = useState('high');
   const [playerName, setPlayerName] = useState('');
   const [points, setPoints] = useState('');
 
-  const fetchScores = async () => {
-    const res = await axios.get('/api/score');
-    const sortedScores = sortScores(res.data);
-    setScores(sortedScores);
-  };
+  useEffect(() => {
+    const fetchScores = async () => {
+      const res = await axios.get('/api/score');
+      const sortedScores = sortScores(res.data);
+      setScores(sortedScores);
+    };
+
+    fetchScores();
+  }, []);
 
   const addNewScore = async (e) => {
     e.preventDefault();
@@ -32,13 +36,19 @@ const Scoreboard = () => {
     }
   };
 
+  useEffect(() => {
+    const arr = [...scores];
+    const sortedArr = sortScores(arr);
+    setScores(sortedArr);
+  }, [sortType]);
+
   const sortScores = (arr) => {
     if (arr.length === 0) {
       return [];
     }
 
     return arr.sort((a, b) => {
-      if (sortValue === 'high') {
+      if (sortType === 'high') {
         return b.score - a.score;
       } else {
         return a.score - b.score;
@@ -46,17 +56,7 @@ const Scoreboard = () => {
     });
   };
 
-  useEffect(() => {
-    fetchScores();
-  }, []);
-
-  useEffect(() => {
-    let arr = [...scores];
-    const sortedArr = sortScores(arr);
-    setScores(sortedArr);
-  }, [sortValue]);
-
-  const renderScores = () => {
+  const renderScoresList = () => {
     if (scores.length === 0) {
       return null;
     }
@@ -73,14 +73,17 @@ const Scoreboard = () => {
 
   return (
     <div className="scoreboard">
-      <h1 className="title">SCOREBOARD</h1>
+      <div className="scoreboard-header">
+        <h1 className="title">SCOREBOARD</h1>
+        <div>{scores.length} scores</div>
+      </div>
       <div className="content">
         <div className="sort-container">
           <label>Sort By Score</label>
           <select
             name="sort"
-            defaultValue={sortValue}
-            onChange={(e) => setSortValue(e.target.value)}
+            defaultValue={sortType}
+            onChange={(e) => setSortType(e.target.value)}
           >
             <option value="high">highest first</option>
             <option value="low">lowest first</option>
@@ -91,16 +94,14 @@ const Scoreboard = () => {
           <div>Player</div>
           <div>Points</div>
         </div>
-        {renderScores()}
+        {renderScoresList()}
 
-        {/* <h3>Add score</h3> */}
         <form onSubmit={addNewScore} className="add-score-form">
           <div className="form-title">Add New Score</div>
           <input
             value={playerName}
             onChange={(e) => setPlayerName(e.target.value)}
             type="text"
-            name="player"
             placeholder="Player name"
             className="player-name"
           />
@@ -109,13 +110,11 @@ const Scoreboard = () => {
             onChange={(e) => setPoints(e.target.value)}
             type="number"
             min={0}
-            name="points"
             placeholder="Points"
             className="player-points"
           />
           <button
             type="submit"
-            //className="submit"
             className={!playerName || !points ? 'disabled submit' : 'submit'}
             disabled={!playerName || !points}
           >
@@ -123,10 +122,6 @@ const Scoreboard = () => {
           </button>
         </form>
       </div>
-
-      {/* <div style={{ paddingTop: '50px' }}>
-        {JSON.stringify(scores, null, 2)}
-      </div> */}
     </div>
   );
 };
